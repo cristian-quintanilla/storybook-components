@@ -14,7 +14,7 @@ const meta = {
     color: { control: 'select' },
     fontColor: { control: 'color' },
   }
-} satisfies Meta<typeof MyLabel>
+} satisfies Meta <typeof MyLabel>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
