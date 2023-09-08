@@ -1,33 +1,17 @@
 # This is a basic workflow to help you get started with Actions
+
 name: Semantic Release
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # Clean node_modules and yarn.lock
-  clean:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        id: cache-nodemodules-and-yarnlock
-        with:
-          path: |
-            node_modules
-            yarn.lock
-          key: ${{ runner.os }}-node-modules-${{ matrix.node-version }}-nodemodules-yarnlock
-          restore-keys: |
-            ${{ runner.os }}-node-modules-${{ matrix.node-version }}-nodemodules-yarnlock
-      - name: Remove node_modules and yarn.lock
-        run: rm -rf node_modules yarn.lock
-
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -40,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 18
+          node-version: 14.17
 
       - name: Install Dependencies
         run: yarn install
